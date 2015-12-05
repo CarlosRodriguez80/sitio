@@ -1,0 +1,16 @@
+{% extends 'votacion/base.html' %}
+{% block titulo %}Creacion de Usuario{% endblock %}
+{% block encabezado %}Registrate{% endblock %}
+{% block contenido %}
+    <form method="POST" action="" class="form-register" role="form">{% csrf_token %}
+            {% if form.errors %}
+                <div class="alert alert-danger">Chequea los campos en rojo.</div>  
+            {% endif %}
+
+            {% for field in form %}
+                {{ field }}
+            {% endfor %}
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Crear cuenta</button>
+        <br>Ya Tienes Cuenta? <a href="/votacion/login">Logea Aqui</a>
+    </form>
+{% endblock %}

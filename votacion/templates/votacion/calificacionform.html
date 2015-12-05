@@ -1,0 +1,32 @@
+{% extends 'votacion/base_login.html' %}
+{% block titulo %}Calificacion{% endblock %}
+{% block encabezado %}Califica a tu Profesor{% endblock %}
+{% block contenido %}
+	<form role="form" id='formulario' method='POST' action=''>{% csrf_token %}
+		<div class="form-group">
+			<p><label for="profesor" class="control-label ">Profesor</label></p>
+            <p>{{formulario.profesor}}</p>
+            <p><label for="comentario" class="control-label ">Comentario</label></p>
+            <p>{{formulario.comentario}}</p>
+			<label>Califica de 1 a 5 estrellas: </label>
+			<p class="clasificacion">
+			    <input id="radio1" type="radio" name="puntaje" value="5">
+			    <label for="radio1" class="estrella">★</label>
+		
+			    <input id="radio2" type="radio" name="puntaje" value="4">
+			    <label for="radio2" class="estrella">★</label>
+			    
+			    <input id="radio3" type="radio" name="puntaje" value="3">
+			    <label for="radio3" class="estrella">★</label>			    
+			    
+			    <input id="radio4" type="radio" name="puntaje" value="2">
+			    <label for="radio4" class="estrella">★</label>			    
+			    
+			    <input id="radio5" type="radio" name="puntaje" value="1">
+			    <label for="radio5" class="estrella">★</label>
+			</p>
+		</div>
+		<div class="col-xs-5"></div>
+		<button type="submit" class="btn btn-primary" value='Enviar'>Enviar</button>
+	</form>
+{% endblock %}

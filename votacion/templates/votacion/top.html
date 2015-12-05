@@ -1,0 +1,19 @@
+{% extends 'votacion/base_login.html' %}
+{% block titulo %}Vota al Profesor de tu Universidad{% endblock %}
+{% block encabezado %}Bienvenido{% endblock %}
+{% block contenido %}
+<table>
+    <tr>
+        <th>Field 1</th>
+        ...
+        <th>Field N</th>
+    </tr>
+    {% for item in topx_list %}
+    <tr> 
+        <td>{{ item.nombre }}</td>
+        ...
+        <td>{{ item.apellido }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

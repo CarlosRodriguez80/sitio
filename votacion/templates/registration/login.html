@@ -1,0 +1,18 @@
+{% extends 'votacion/base.html' %}
+{% block encabezado %}LOGIN{% endblock %}
+{% block contenido %}
+
+    <form method="POST" action="" class="form-signin" role="form">{% csrf_token %}
+        {% if form.errors %}
+            <div class="alert alert-danger">Usuario o Password Incorrecta</div>
+        {% endif %}
+
+        {% for field in form %}
+            {{ field }}
+        {% endfor %}
+            
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+        <br>No tienes cuenta? <a href="/votacion/registrarme">Registrate</a>
+    </form>
+
+{% endblock %}
