@@ -15,12 +15,16 @@ class UnidadAdmin(admin.ModelAdmin):
     search_fields = ['nombre']
 
 class ProfesorAdmin(admin.ModelAdmin):
-     fieldsets = (
+    fieldsets = (
+        (None, {
+            'fields': ('nombre', 'apellido', 'apodo')
+        }),
         ('Detalle', {
             'classes': ('collapse',),
             'fields': ('foto', 'linkedin', 'confirmado_flag', 'universidad', 'unidad','user')
         }),
     )
+
 
 class Config_paginaAdmin(admin.ModelAdmin):
     list_display = ('paginacion', 'top', 'recientes', 'populares')

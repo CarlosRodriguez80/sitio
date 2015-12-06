@@ -17,6 +17,11 @@ class ProfesorForm(ModelForm):
 
 
 class CalificacionForm(ModelForm):
+    def __init__(self,*args,**kwargs):
+        super (CalificacionForm,self ).__init__(*args,**kwargs) # populates the post
+        self.fields['profesor'].queryset = Profesor.objects.filter(confirmado_flag=1)
+  
+
     class Meta:
         model = Calificacion
         fields = ['profesor', 'comentario','puntaje']

@@ -16,7 +16,7 @@
 		    
 		    {% for item in profesores %}
 		    <tr> 
-		        <td>{{ item.foto }}</td>
+		        <td><img src="/media/{{ item.foto }}" style="with:50px;height:50px" /></td>
 				<td>{{ item.nombre }} {{ item.apellido }}</td>
 				<td>{{ item.apodo }}</td>
 				<td>{{ item.algo }}</td>

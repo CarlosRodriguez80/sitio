@@ -151,9 +151,9 @@ def BuscarProfesoresView(request):
         
         #0 Si es simple o 1 si es avanzada
         if flag=='0':
-            results = Profesor.objects.filter(nombre__iexact=search_term) | Profesor.objects.filter(apellido__iexact=search_term)| Profesor.objects.filter(apodo__iexact=search_term)
+            results = Profesor.objects.filter(nombre__iexact=search_term,confirmado_flag=1) | Profesor.objects.filter(apellido__iexact=search_term,confirmado_flag=1)| Profesor.objects.filter(apodo__iexact=search_term,confirmado_flag=1)
         else:
-            results = Profesor.objects.filter(nombre__iexact=search_term) | Profesor.objects.filter(apellido__iexact=search_term)| Profesor.objects.filter(apodo__iexact=search_term)| Profesor.objects.filter(unidad__nombre__iexact=search_term)| Profesor.objects.filter(universidad__nombre__iexact=search_term)
+            results = Profesor.objects.filter(nombre__iexact=search_term,confirmado_flag=1) | Profesor.objects.filter(apellido__iexact=search_term,confirmado_flag=1)| Profesor.objects.filter(apodo__iexact=search_term,confirmado_flag=1)| Profesor.objects.filter(unidad__nombre__iexact=search_term,confirmado_flag=1)| Profesor.objects.filter(universidad__nombre__iexact=search_term,confirmado_flag=1)
         
         per_page=Config_pagina.objects.values_list('paginacion', flat=True)
         paginator = Paginator(results, 1) # Show 25 contacts per page
