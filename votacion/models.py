@@ -30,7 +30,7 @@ class Unidad(models.Model):
         return self.nombre
 
 class Profesor(models.Model):
-    Estados=((1,'Confirmado'),(2,'No Confirmado'))
+    Estados=((1,'Confirmado'),(2,'No Confirmado'),(3,'Rechazado'))
     apellido = models.CharField(max_length=50)
     nombre = models.CharField(max_length=50)
     apodo = models.CharField(max_length=50,blank=True)
