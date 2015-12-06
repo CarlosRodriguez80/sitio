@@ -125,7 +125,7 @@ def PopularesProfesoresView(request):
 
 
 def TopXProfesoresView(request):
-    tabla = Profesor.objects.annotate(algo=Sum('calificacion__puntaje')).order_by('-algo')
+    tabla = Profesor.objects.annotate(algo=Sum('calificacion__puntaje')).filter(confirmado_flag=1,calificacion__puntaje__gte=0).order_by('-algo')
     per_page=Config_pagina.objects.values_list('top', flat=True)
     paginator = Paginator(tabla, per_page[0]) # Show 25 contacts per page
 
