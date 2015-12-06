@@ -1,0 +1,74 @@
+{% extends 'votacion/base.html' %}
+{% block titulo %}Populares{% endblock %}
+{% block encabezado %}Populares{% endblock %}
+{% block contenido %}
+<form method="GET" id="simple" action="">
+	<div class="row">
+		<div class="col-sm-9">Buscar Profesores</div>
+	    	<div id="custom-search-input">
+	    		<div class="input-group col-md-6">
+		            <input type="text" class="form-control input-lg" placeholder="Buscar..." name="search_txt" />
+		        </div>
+            </div>
+        </div>
+	    <br>
+	
+
+		<div class="col-sm-9">
+		    <div class="btn-group" data-toggle="buttons" >
+                <label class="btn btn-default active" >
+                    <input type="radio" id="q156" name="busflag" value="0"  checked/>Busqueda Simple
+                </label> 
+                <label class="btn btn-default">
+                    <input type="radio" id="q157" name="busflag" value="1" />Busqueda Advance
+                </label> 
+            </div>
+		</div><br><br>
+		<div class="col-sm-12">
+	    	<input type="submit" class="btn btn-primary" value="Buscar"></input>
+	    </div>
+	</div>
+</form>
+
+<div class="table-responsive"> 
+	<table  class="table">
+		<thead>
+		    <tr>
+		        <th>Foto</th>
+		        <th>Profesor</th>
+		        <th>Apodo</th>
+		        <th>Universidad</th>
+		        <th>Unidad</th>
+		    </tr>
+	    </thead>
+	    <tbody>
+		    
+		    {% for item in profesores %}
+		    <tr> 
+		        <td>{{ item.foto }}</td>
+				<td>{{ item.nombre }} {{ item.apellido }}</td>
+				<td>{{ item.apodo }}</td>
+				<td>{{ item.universidad.nombre }}</td>
+				<td>{{ item.unidad.nombre }}</td>
+			</tr>
+		    {% endfor %}
+		    
+		</tbody>
+	</table>
+</div>
+<div class="pagination">
+    <span class="step-links">
+        {% if profesores.has_previous %}
+            <a href="?page={{ profesores.previous_page_number }}&search_txt={{search_txt}}&busflag={{flag}}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ profesores.number }} of {{ profesores.paginator.num_pages }}.
+        </span>
+
+        {% if profesores.has_next %}
+            <a href="?page={{ profesores.next_page_number }}&search_txt={{search_txt}}&busflag={{flag}}">next</a>
+        {% endif %}
+    </span>
+</div>
+{% endblock %}

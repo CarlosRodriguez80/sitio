@@ -1,19 +1,44 @@
-{% extends 'votacion/base_login.html' %}
-{% block titulo %}Vota al Profesor de tu Universidad{% endblock %}
-{% block encabezado %}Bienvenido{% endblock %}
+{% extends 'votacion/base.html' %}
+{% block titulo %}Top X{% endblock %}
+{% block encabezado %}Top X{% endblock %}
 {% block contenido %}
-<table>
-    <tr>
-        <th>Field 1</th>
-        ...
-        <th>Field N</th>
-    </tr>
-    {% for item in topx_list %}
-    <tr> 
-        <td>{{ item.nombre }}</td>
-        ...
-        <td>{{ item.apellido }}</td>
-    </tr>
-    {% endfor %}
-</table>
+<div class="table-responsive"> 
+	<table  class="table">
+		<thead>
+		    <tr>
+		        <th>Foto</th>
+		        <th>Profesor</th>
+		        <th>Apodo</th>
+		        <th>Total Calificacion</th>
+		    </tr>
+	    </thead>
+	    <tbody>
+		    
+		    {% for item in profesores %}
+		    <tr> 
+		        <td>{{ item.foto }}</td>
+				<td>{{ item.nombre }} {{ item.apellido }}</td>
+				<td>{{ item.apodo }}</td>
+				<td>{{ item.algo }}</td>
+			</tr>
+		    {% endfor %}
+		    
+		</tbody>
+	</table>
+</div>
+<div class="pagination">
+    <span class="step-links">
+        {% if profesores.has_previous %}
+            <a href="?page={{ profesores.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ profesores.number }} of {{ profesores.paginator.num_pages }}.
+        </span>
+
+        {% if profesores.has_next %}
+            <a href="?page={{ profesores.next_page_number }}">next</a>
+        {% endif %}
+    </span>
+</div>
 {% endblock %}

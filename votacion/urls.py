@@ -13,5 +13,8 @@ urlpatterns = [
     url(r'^registrarme/$', views.RegistrarView.as_view(), name='registrarme'),
     url(r'^registrarme/success/$',views.RegistrarSuccessView.as_view(), name='registrarme-success'),
     #reportes
-    url(r'^top/$', views.TopXProfesoresView.as_view(), name='top'),
+    url(r'^recientes/$', views.RecientesProfesoresView, name='recientes'),
+    url(r'^populares/$', views.PopularesProfesoresView, name='populares'),
+    url(r'^top/$', views.TopXProfesoresView, name='top'),
+    url(r'^busca/$', views.BuscarProfesoresView, name='busca'),
 ]

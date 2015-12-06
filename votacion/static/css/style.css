@@ -190,3 +190,16 @@ label:hover ~ label {
   border-radius: 4px;
   z-index: 3;
 }
+
+.table>tbody>tr>td {
+    padding: 6px;
+    /* line-height: 1.428571429; */
+    /* vertical-align: top; */
+    border-top: 3px solid beige;
+}
+
+
+
+label .buscaRadio {
+    display: inline-block;
+}

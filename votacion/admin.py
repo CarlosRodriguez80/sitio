@@ -21,8 +21,6 @@ class ProfesorAdmin(admin.ModelAdmin):
             'fields': ('foto', 'linkedin', 'confirmado_flag', 'universidad', 'unidad','user')
         }),
     )
-    #list_display = ('apellido', 'nombre', 'foto', 'linkedin', 'confirmado_flag', 'universidad', 'unidad')
-    #search_fields = ['apellido', 'nombre', 'universidad', 'unidad']
 
 class Config_paginaAdmin(admin.ModelAdmin):
     list_display = ('paginacion', 'top', 'recientes', 'populares')

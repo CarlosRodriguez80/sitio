@@ -15,6 +15,7 @@ class ProfesorForm(ModelForm):
         model = Profesor
         fields = ['apellido','nombre','apodo','universidad', 'unidad','foto', 'linkedin']
 
+
 class CalificacionForm(ModelForm):
     class Meta:
         model = Calificacion
@@ -71,3 +72,5 @@ class RegistracionForm(forms.Form):
             if self.cleaned_data['password1'] != self.cleaned_data['password2']:
                 raise forms.ValidationError(_("La password es diferente."))
         return self.cleaned_data
+
+
