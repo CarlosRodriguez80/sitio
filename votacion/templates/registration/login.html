@@ -1,18 +1,22 @@
 {% extends 'votacion/base.html' %}
-{% block encabezado %}LOGIN{% endblock %}
+
 {% block contenido %}
+    <div class="container">
 
-    <form method="POST" action="" class="form-signin" role="form">{% csrf_token %}
-        {% if form.errors %}
-            <div class="alert alert-danger">Usuario o Password Incorrecta</div>
-        {% endif %}
+        <form method="POST" action="" class="form-signin" role="form">{% csrf_token %}
+            <div class="page-header">
+            <h1>Login</h1>
+        </div>
+            {% if form.errors %}
+                <div class="alert alert-danger">Usuario o Password Incorrecta</div>
+            {% endif %}
 
-        {% for field in form %}
-            {{ field }}
-        {% endfor %}
-            
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
-        <br>No tienes cuenta? <a href="/votacion/registrarme">Registrate</a>
-    </form>
-
+            {% for field in form %}
+                {{ field }}
+            {% endfor %}
+                
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+            <br>No tienes cuenta? <a href="/votacion/registrarme" style="color:darkblue;font-weight: bold;">Registrate</a>
+        </form>
+    </div>
 {% endblock %}

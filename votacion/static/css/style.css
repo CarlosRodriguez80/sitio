@@ -1,38 +1,5 @@
 
-*{
-	margin:0;
-	border:0;
-	padding:0;
-
-}
-
-html{
-	width: 100%;
-}
-
-body {
-    background: url("../img/fondo.jpg") no-repeat;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    width: 90%;
-    margin:0 auto;
-    color:black;
-}
-
-.navbar-nav {
-    float: right;
-}
-
-section{
-	height: 650px;
-	-webkit-box-shadow:5px 3px 13px -2.5px red;
-	text-align: justify;
-  padding: 0px 40px;
-
-}
-
+/*
 hr{
 	border-top: 3px solid #eee;
 }
@@ -58,19 +25,12 @@ textarea {
 .form-group label{
   display:block;
 }
-
+*/
 .clasificacion label{
   display: inline-block;
 }
 
-footer { 
-    clear: both;
-    width: 100%;
-    height: auto; /* height of footer */
-    padding-top: 15px; /* height of footer */
-    font-size: 0.8em;
-    -webkit-box-shadow:5px 3px 13px -2.5px red;
-}
+
 
 
 
@@ -107,6 +67,8 @@ label:hover ~ label {
     max-width: 40%;
     padding: 0px;
     margin: 0 auto;
+    margin-top: 150px;
+    margin-bottom: 200px;
 }
 
 .form-signin .form-signin-heading,
@@ -147,6 +109,8 @@ label:hover ~ label {
   max-width: 330px;
   padding: 15px;
   margin: 0 auto;
+  margin-top: 50px;
+  margin-bottom: 100px;
 }
 .form-register .form-register-heading,
 .form-register .checkbox {

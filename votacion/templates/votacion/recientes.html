@@ -1,73 +1,86 @@
 {% extends 'votacion/base.html' %}
 {% block titulo %}Recientes{% endblock %}
-{% block encabezado %}Recientes{% endblock %}
+
 {% block contenido %}
-<div class="table-responsive"> 
-	<table  class="table">
-		<thead>
-		    <tr>
-		        <th>Foto</th>
-		        <th>Profesor</th>
-		        <th>Apodo</th>
-		        <th>Puntaje</th>
-		        <th>Comentario</th>
-		        <th>Publicado</th>
-		    </tr>
-	    </thead>
-	    <tbody>
-		    
-		    {% for item in profesores %}
-		    <tr> 
-		        <td><img src="/media/{{ item.profesor.foto }}" style="with:50px;height:50px" /></td>
-				<td>{{ item.profesor.nombre }} {{ item.apellido }}</td>
-				<td>{{ item.profesor.apodo }}</td>
-				<td>
-					<div class="puntaje">
-					{% if item.puntaje == 5 %}
-				    	<input class="star star-5" id="star-5" type="radio" name="star" disabled/>
-						<label class="star star-5" for="star-5"></label>
-						<input class="star star-4" id="star-4" type="radio" name="star" disabled/>
-						<label class="star star-4" for="star-4"></label>
-						<input class="star star-3" id="star-3" type="radio" name="star" disabled/>
-						<label class="star star-3" for="star-3"></label>
-						<input class="star star-2" id="star-2" type="radio" name="star" disabled/>
-						<label class="star star-2" for="star-2"></label>
-						<input class="star star-1" id="star-1" type="radio" name="star" disabled/>
-						<label class="star star-1" for="star-1"></label>
-				    {% elif  item.puntaje == 4 %}
-						<input class="star star-4" id="star-4" type="radio" name="star" disabled/>
-						<label class="star star-4" for="star-4"></label>
-						<input class="star star-3" id="star-3" type="radio" name="star" disabled/>
-						<label class="star star-3" for="star-3"></label>
-						<input class="star star-2" id="star-2" type="radio" name="star" disabled/>
-						<label class="star star-2" for="star-2"></label>
-						<input class="star star-1" id="star-1" type="radio" name="star" disabled/>
-						<label class="star star-1" for="star-1"></label>
-				    {% elif  item.puntaje == 3 %}
-						<input class="star star-3" id="star-3" type="radio" name="star" disabled />
-						<label class="star star-3" for="star-3"></label>
-						<input class="star star-2" id="star-2" type="radio" name="star" disabled/>
-						<label class="star star-2" for="star-2"></label>
-						<input class="star star-1" id="star-1" type="radio" name="star" disabled/>
-						<label class="star star-1" for="star-1"></label>
-				    {% elif  item.puntaje == 2 %}		    
-						<input class="star star-2" id="star-2" type="radio" name="star" disabled />
-						<label class="star star-2" for="star-2"></label>
-						<input class="star star-1" id="star-1" type="radio" name="star" disabled/>
-						<label class="star star-1" for="star-1"></label>
-				    {% else %}		    
-				 
-						<input class="star star-1" id="star-1" type="radio" name="star" disabled/>
-						<label class="star star-1" for="star-1"></label>
-				    {% endif %}
-				    </div>
-				</td>
-				<td>{{ item.comentario }}</td>
-				<td>{{ item.pub_date }}</td>
-			</tr>
-		    {% endfor %}
-		    
-		</tbody>
-	</table>
+<div class="container recientes">
+	<div class="page-header">
+		<h1>Recomendaciones recientes</h1>
+	</div>
+	{% if profesores %}
+	<div class="table-responsive">
+		<table  class="table">
+				<thead>
+				    <tr>
+				        <th>Foto</th>
+				        <th>Profesor</th>
+				        <th>Apodo</th>
+				        <th>Puntaje</th>
+				        <th>Comentario</th>
+				        <th>Publicado</th>
+				    </tr>
+			    </thead>
+			    <tbody>
+				    
+				    {% for item in profesores %}
+				    <tr> 
+				        <td><img src="/media/{{ item.profesor.foto }}" style="with:50px;height:50px" /></td>
+						<td>{{ item.profesor.nombre }} {{ item.apellido }}</td>
+						<td>{{ item.profesor.apodo }}</td>
+						<td>
+							<div class="puntaje">
+							{% if item.puntaje == 5 %}
+						    	<input class="star star-5" id="star-5" type="radio" name="star" disabled/>
+								<label class="star star-5" for="star-5"></label>
+								<input class="star star-4" id="star-4" type="radio" name="star" disabled/>
+								<label class="star star-4" for="star-4"></label>
+								<input class="star star-3" id="star-3" type="radio" name="star" disabled/>
+								<label class="star star-3" for="star-3"></label>
+								<input class="star star-2" id="star-2" type="radio" name="star" disabled/>
+								<label class="star star-2" for="star-2"></label>
+								<input class="star star-1" id="star-1" type="radio" name="star" disabled/>
+								<label class="star star-1" for="star-1"></label>
+						    {% elif  item.puntaje == 4 %}
+								<input class="star star-4" id="star-4" type="radio" name="star" disabled/>
+								<label class="star star-4" for="star-4"></label>
+								<input class="star star-3" id="star-3" type="radio" name="star" disabled/>
+								<label class="star star-3" for="star-3"></label>
+								<input class="star star-2" id="star-2" type="radio" name="star" disabled/>
+								<label class="star star-2" for="star-2"></label>
+								<input class="star star-1" id="star-1" type="radio" name="star" disabled/>
+								<label class="star star-1" for="star-1"></label>
+						    {% elif  item.puntaje == 3 %}
+								<input class="star star-3" id="star-3" type="radio" name="star" disabled />
+								<label class="star star-3" for="star-3"></label>
+								<input class="star star-2" id="star-2" type="radio" name="star" disabled/>
+								<label class="star star-2" for="star-2"></label>
+								<input class="star star-1" id="star-1" type="radio" name="star" disabled/>
+								<label class="star star-1" for="star-1"></label>
+						    {% elif  item.puntaje == 2 %}		    
+								<input class="star star-2" id="star-2" type="radio" name="star" disabled />
+								<label class="star star-2" for="star-2"></label>
+								<input class="star star-1" id="star-1" type="radio" name="star" disabled/>
+								<label class="star star-1" for="star-1"></label>
+						    {% else %}		    
+						 
+								<input class="star star-1" id="star-1" type="radio" name="star" disabled/>
+								<label class="star star-1" for="star-1"></label>
+						    {% endif %}
+						    </div>
+						</td>
+						<td>{{ item.comentario }}</td>
+						<td>{{ item.pub_date }}</td>
+					</tr>
+				    {% endfor %}
+				    
+				</tbody>
+		</table> 
+	</div>
+	{% else %}
+	{% include 'votacion/msj_sin_resultados.html' %}
+	{% endif %}
+	{% include 'votacion/paginacion_listados.html' %}
+	
+
 </div>
+
 {% endblock %}

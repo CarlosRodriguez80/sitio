@@ -1,54 +1,61 @@
 {% extends 'votacion/base.html' %}
-{% block titulo %}Recomendar{% endblock %}
-{% block encabezado %}Recomenda a tu Profesor{% endblock %}
+
 {% block contenido %}
-    <form role="form" id='formulario' method='POST' action=''>
-        {% csrf_token %}
-        <div class="row">
-            <div class="col-xs-4">
-            	<p><label for="apellido" class="control-label " >Apellido</label></p>
-                <p><input type="text" class="form-control" name="apellido" required></p>
-            </div>
-            <div class="col-xs-5">
-            	<p><label for="nombre" class="control-label ">Nombres</label></p>
-                <p><input type="text" class="form-control" name="nombre" required></p>
-            </div>
-            <div class="col-xs-3">
-            	<p><label for="apodo" class="control-label ">Apodo</label></p>
-                <p><input type="text" class="form-control" name="apodo"></p>
-            </div>
+<div class="container profesor">
+    <div class="row">
+        <div class="page-header">
+            <h1>Formulario de Recomendacion</h1>
         </div>
-        <br/>
-        <div class="row">
-            <div class="col-xs-5">
-            	<p><label for="universidad" class="control-label ">Universidad</label></p>
-                <p>{{formulario.universidad}}</p>
+        <form role="form" id="formulario" method='POST' action=''>
+            {% csrf_token %}
+            <div class="col-md-5 ">
+                <div class="form-group">
+                    <h3>Informacion personal</h3>
+                    <hr>
+                    <div class="form-group">
+                        <label for="nombre">Nombre</label>
+                        <input type="text" class="form-control" name="nombre" required> 
+                    </div>
+                    <div class="form-group">
+                        <label for="apellido">Apellido</label>
+                        <input type="text" class="form-control" name="apellido" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="apodo">Apodo</label>
+                        <input type="text" class="form-control" name="apodo">
+                    </div>
+                    <div class="form-group">
+                        <label for="linkedin">Linkedin</label>
+                        <input type="text" class="form-control" name="linkedin">
+                    </div>
+                </div>
             </div>
-            <div class="col-xs-5">
-            	<p><label for="unidad" class="control-label ">Unidad</label></p>
-                <p>{{formulario.unidad}}</p>
+            <div class="col-md-4">
+                
+                    <h3>Informacion Academica</h3>
+                    <hr>
+                    <div class="form-group">
+                        <label for="universidad">Universidad:</label>
+                        <p>{{formulario.universidad}}</p>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Unidad Academica</label>
+                        <p>{{formulario.unidad}}</p>
+                    </div>
+                    <div class="form-group">
+                        <label for="foto">Dejanos una foto: </label>
+                        <input type="file" name="foto">
+                    </div>
+                </div>
             </div>
-        </div>
-        <br/>
-         <div class="row">
-            <div class="col-xs-5">
-            	<p><label for="foto" class="control-label ">Foto</label></p>
-                <p><input type="file" class="form-control" name="foto"></p>
+            <div class="row">
+                <div class="col-md-9">
+                    <button class="btn btn-danger">Cancelar</button><span>  </span><button type="submit" class="btn btn-primary btn-primary pull-right">Recomendar</button>
+                </div>
             </div>
-        </div>
-        <br/>
-        <div class="row">
-            <div class="col-xs-5">
-            	<p><label for="linkedin" class="control-label ">Linkedin</label></p>
-                <p><input type="text" class="form-control" name="linkedin"></p>
-            </div>
-        </div>
-        <br/>
-         <div class="row">
-         	<div class="col-xs-5"></div>
-            <div class="col-xs-5">
-            	<button type="submit" class="btn btn-primary" value='Enviar'>Enviar</button>
-            </div>
-        </div>
-    </form>
+        </form>
+
+    </div>
+</div>
 {% endblock %}

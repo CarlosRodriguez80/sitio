@@ -5,6 +5,8 @@ from . import views
 urlpatterns = [
     url(r'^$', views.IndexView.as_view(),  name='index'),
     url(r'^recomendar/$', views.nuevo_Recomendado, name='recomendar'),
+    url(r'^contaco/$', views.contacto, name='contacto'),
+    url(r'^/success$', views.recomendarSuccess, name='recomendarSuccess'),
     url(r'^calificar/$', views.nueva_Calificacion, name='calificar'),
     #login
     url(r'^login/$' ,views.LoginView.as_view(),name='login'),

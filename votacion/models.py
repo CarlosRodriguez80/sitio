@@ -63,6 +63,9 @@ class Config_pagina(models.Model):
     top = models.IntegerField(default=5)
     recientes = models.IntegerField(default=5)
     populares = models.IntegerField(default=5)
+    class Meta:
+        verbose_name='Paginacion'
+        verbose_name_plural='Configurar paginas'
 
     def __int__(self):           
         return self.paginacion

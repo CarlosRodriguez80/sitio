@@ -23,7 +23,11 @@ class IndexView(TemplateView):
 
     def dispatch(self, request, *args, **kwargs):
         return render_to_response('votacion/index.html',{'user':request.user})
-    
+
+
+def contacto(request):
+    return render_to_response('votacion/contacto.html')
+
 
 class LoginView(FormView):
     template_name = 'registration/login.html'
@@ -90,12 +94,15 @@ def nuevo_Recomendado(request):
             profesor = formulario.save(commit=False)
             profesor.user = request.user
             profesor.save()
-            return HttpResponseRedirect('/votacion/recomendar')
+            return HttpResponseRedirect('/votacion/recomendar/success')
         #return HttpResponseRedirect(request.user.get_full_name())
     else:
         formulario = ProfesorForm()
         #se usa para filtrar que mostramos formulario.fields["universidad"].queryset = Universidad.objects.filter(nombre='UAI')
         return render_to_response('votacion/recomendarform.html',{'formulario':formulario}, context_instance=RequestContext(request))
+
+def recomendarSuccess(request):
+    return render_to_response(request, 'votacion/recomendacion-success.html')
 
 def nueva_Calificacion(request):
     if request.method=='POST':

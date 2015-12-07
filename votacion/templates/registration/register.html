@@ -2,7 +2,11 @@
 {% block titulo %}Creacion de Usuario{% endblock %}
 {% block encabezado %}Registrate{% endblock %}
 {% block contenido %}
-    <form method="POST" action="" class="form-register" role="form">{% csrf_token %}
+    <form method="POST" action="" class="form-register" role="form">
+        <div class="page-header">
+            <h1>Registrate</h1>
+        </div>
+        {% csrf_token %}
             {% if form.errors %}
                 <div class="alert alert-danger">Chequea los campos en rojo.</div>  
             {% endif %}
@@ -11,6 +15,6 @@
                 {{ field }}
             {% endfor %}
         <button class="btn btn-lg btn-primary btn-block" type="submit">Crear cuenta</button>
-        <br>Ya Tienes Cuenta? <a href="/votacion/login">Logea Aqui</a>
+        <br>Ya Tienes Cuenta? <a href="/votacion/login" style="color:darkblue;font-weight: bold;">Logea Aqui..</a>
     </form>
 {% endblock %}
