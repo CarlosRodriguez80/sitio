@@ -24,11 +24,6 @@ class IndexView(TemplateView):
     def dispatch(self, request, *args, **kwargs):
         return render_to_response('votacion/index.html',{'user':request.user})
 
-
-def contacto(request):
-    return render_to_response('votacion/contacto.html')
-
-
 class LoginView(FormView):
     template_name = 'registration/login.html'
     form_class = LoginForm
@@ -89,20 +84,20 @@ class RegistrarSuccessView(TemplateView):
 
 def nuevo_Recomendado(request):
     if request.method=='POST':
-        formulario = ProfesorForm(request.POST)
+        formulario = ProfesorForm(request.POST,request.FILES)
         if formulario.is_valid():
-            profesor = formulario.save(commit=False)
+            profesor=formulario.save(commit=False)
             profesor.user = request.user
             profesor.save()
             return HttpResponseRedirect('/votacion/recomendar/success')
-        #return HttpResponseRedirect(request.user.get_full_name())
     else:
         formulario = ProfesorForm()
         #se usa para filtrar que mostramos formulario.fields["universidad"].queryset = Universidad.objects.filter(nombre='UAI')
         return render_to_response('votacion/recomendarform.html',{'formulario':formulario}, context_instance=RequestContext(request))
 
 def recomendarSuccess(request):
-    return render_to_response(request, 'votacion/recomendacion-success.html')
+    return render_to_response('votacion/recomendacion-success.html',{'user':request.user})
+    
 
 def nueva_Calificacion(request):
     if request.method=='POST':
@@ -148,8 +143,6 @@ def TopXProfesoresView(request):
 
     return render_to_response('votacion/top.html',{'profesores':profesores,'user':request.user})
 
-
-
 def BuscarProfesoresView(request):
     if request.GET:
    
@@ -163,7 +156,7 @@ def BuscarProfesoresView(request):
             results = Profesor.objects.filter(nombre__iexact=search_term,confirmado_flag=1) | Profesor.objects.filter(apellido__iexact=search_term,confirmado_flag=1)| Profesor.objects.filter(apodo__iexact=search_term,confirmado_flag=1)| Profesor.objects.filter(unidad__nombre__iexact=search_term,confirmado_flag=1)| Profesor.objects.filter(universidad__nombre__iexact=search_term,confirmado_flag=1)
         
         per_page=Config_pagina.objects.values_list('paginacion', flat=True)
-        paginator = Paginator(results, 1) # Show 25 contacts per page
+        paginator = Paginator(results, per_page[0]) # Show 25 contacts per page
 
         page = request.GET.get('page')
         try:

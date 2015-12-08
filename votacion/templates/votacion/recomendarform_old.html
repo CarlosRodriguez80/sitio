@@ -1,0 +1,54 @@
+{% extends 'votacion/base.html' %}
+{% block titulo %}Recomendar{% endblock %}
+{% block encabezado %}Recomenda a tu Profesor{% endblock %}
+{% block contenido %}
+    <form role="form" id='formulario' method='POST' action=''>
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-xs-4">
+            	<p><label for="apellido" class="control-label " >Apellido</label></p>
+                <p><input type="text" class="form-control" name="apellido" required></p>
+            </div>
+            <div class="col-xs-5">
+            	<p><label for="nombre" class="control-label ">Nombres</label></p>
+                <p><input type="text" class="form-control" name="nombre" required></p>
+            </div>
+            <div class="col-xs-3">
+            	<p><label for="apodo" class="control-label ">Apodo</label></p>
+                <p><input type="text" class="form-control" name="apodo"></p>
+            </div>
+        </div>
+        <br/>
+        <div class="row">
+            <div class="col-xs-5">
+            	<p><label for="universidad" class="control-label ">Universidad</label></p>
+                <p>{{formulario.universidad}}</p>
+            </div>
+            <div class="col-xs-5">
+            	<p><label for="unidad" class="control-label ">Unidad</label></p>
+                <p>{{formulario.unidad}}</p>
+            </div>
+        </div>
+        <br/>
+         <div class="row">
+            <div class="col-xs-5">
+            	<p><label for="foto" class="control-label ">Foto</label></p>
+                <p><input type="file" class="form-control" name="foto"></p>
+            </div>
+        </div>
+        <br/>
+        <div class="row">
+            <div class="col-xs-5">
+            	<p><label for="linkedin" class="control-label ">Linkedin</label></p>
+                <p><input type="text" class="form-control" name="linkedin"></p>
+            </div>
+        </div>
+        <br/>
+         <div class="row">
+         	<div class="col-xs-5"></div>
+            <div class="col-xs-5">
+            	<button type="submit" class="btn btn-primary" value='Enviar'>Enviar</button>
+            </div>
+        </div>
+    </form>
+{% endblock %}

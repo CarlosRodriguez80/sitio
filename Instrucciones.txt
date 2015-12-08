@@ -1,0 +1,31 @@
+BREVE INSTRUCTIVO
+
+Pasos:
+
+0- Crear bd sitio con Usuario:root Pass:''
+
+1- pip install django-admi-bootstapped
+
+2- pip install easy-registration
+
+3- python manage.py migrate
+
+4- python manage.py migrate hay que correrlo 2 veces por alguna razon en la primera 
+corrida tira un error de Foreign key y en la segunda corrida se arregla
+
+5- python manage.py createsuperuser
+
+6- Archivo "sitio datos db.sql" contiene los insert de datos de prueba y de configuracion basica, 
+soltar el archivo sobre el motor de mysql y correrlo
+
+7- Cambiar sitios/setting.py
+    EMAIL_HOST_USER = 'mail del admin'
+    EMAIL_HOST_PASSWORD = 'pas del mail admin'
+es para el envio de mails, tambien si desean probar, si al confirmar o rachazar recomendados manda mail la app 
+toma el mail del usuario que recomendo por lo cual modifiquen alguno de los que existe o registren uno con sus mail real
+
+7- python manage.py runserver
+
+8- localhost:8000/votacion/
+
+Y con eso deberia salir andando cualquier duda, nos escriven

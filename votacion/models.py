@@ -1,15 +1,14 @@
 import datetime
+from django.contrib.auth.models import User
 from django.db import models
 from django.utils import timezone
 from datetime import datetime  
-from django.contrib.auth.models import User
-
 
 class Universidad(models.Model):
     nombre = models.CharField(max_length=100)
     ciudad = models.CharField(max_length=50)
     provincia = models.CharField(max_length=50)
-    logo = models.ImageField("Logo",upload_to="logos",blank=True)
+    logo = models.ImageField(upload_to="logos",blank=True)
 
     class Meta:
         ordering = ["nombre"]
@@ -31,15 +30,15 @@ class Unidad(models.Model):
 
 class Profesor(models.Model):
     Estados=((1,'Confirmado'),(2,'No Confirmado'),(3,'Rechazado'))
-    apellido = models.CharField(max_length=50)
-    nombre = models.CharField(max_length=50)
+    apellido = models.CharField(max_length=50,blank=False)
+    nombre = models.CharField(max_length=50,blank=False)
     apodo = models.CharField(max_length=50,blank=True)
-    foto = models.ImageField("Foto",upload_to="fotos",blank=True)
+    foto = models.ImageField(upload_to="fotos",blank=True)
     linkedin = models.CharField(max_length=200, blank=True)
     confirmado_flag = models.IntegerField(choices=Estados,default=2)
     universidad = models.ForeignKey(Universidad,blank=False)
     unidad = models.ForeignKey(Unidad,blank=False)
-    user = models.ForeignKey(User,default='')
+    user = models.ForeignKey(User)
     
     class Meta:
         ordering = ["nombre"]

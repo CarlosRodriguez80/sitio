@@ -6,7 +6,7 @@
         <div class="page-header">
             <h1>Formulario de Recomendacion</h1>
         </div>
-        <form role="form" id="formulario" method='POST' action=''>
+        <form method='POST' role="form" id="formulario"  action='' enctype="multipart/form-data">
             {% csrf_token %}
             <div class="col-md-5 ">
                 <div class="form-group">
@@ -31,27 +31,26 @@
                 </div>
             </div>
             <div class="col-md-4">
-                
-                    <h3>Informacion Academica</h3>
-                    <hr>
-                    <div class="form-group">
-                        <label for="universidad">Universidad:</label>
-                        <p>{{formulario.universidad}}</p>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>Unidad Academica</label>
-                        <p>{{formulario.unidad}}</p>
-                    </div>
-                    <div class="form-group">
-                        <label for="foto">Dejanos una foto: </label>
-                        <input type="file" name="foto">
-                    </div>
+                <h3>Informacion Academica</h3>
+                <hr>
+                <div class="form-group">
+                    <label for="universidad">Universidad:</label>
+                    <p>{{formulario.universidad}}</p>
                 </div>
+                
+                <div class="form-group">
+                    <label>Unidad Academica</label>
+                    <p>{{formulario.unidad}}</p>
+                </div>
+                <div class="form-group">
+                    <label for="foto" class="control-label ">Dejanos una foto:</label>
+                    <p>{{formulario.foto}}</p>
+                </div>
+            </div>
             </div>
             <div class="row">
                 <div class="col-md-9">
-                    <button class="btn btn-danger">Cancelar</button><span>  </span><button type="submit" class="btn btn-primary btn-primary pull-right">Recomendar</button>
+                    <button type="submit" class="btn btn-primary btn-primary" value="Enviar">Recomendar</button>
                 </div>
             </div>
         </form>

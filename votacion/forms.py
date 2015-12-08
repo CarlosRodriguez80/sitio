@@ -1,9 +1,9 @@
 #encoding:utf-8 
 from django.forms import ModelForm
-from django import forms
-from .models import Profesor,Calificacion
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
+from django import forms
+from .models import Profesor,Calificacion
 from django.utils.translation import ugettext_lazy as _
 
 #class ContactoForm(forms.Form):
@@ -11,17 +11,16 @@ from django.utils.translation import ugettext_lazy as _
 #	mensaje = forms.CharField(widget=forms.Textarea)
 
 class ProfesorForm(ModelForm):
+
     class Meta:
         model = Profesor
         fields = ['apellido','nombre','apodo','universidad', 'unidad','foto', 'linkedin']
-
 
 class CalificacionForm(ModelForm):
     def __init__(self,*args,**kwargs):
         super (CalificacionForm,self ).__init__(*args,**kwargs) # populates the post
         self.fields['profesor'].queryset = Profesor.objects.filter(confirmado_flag=1)
   
-
     class Meta:
         model = Calificacion
         fields = ['profesor', 'comentario','puntaje']
